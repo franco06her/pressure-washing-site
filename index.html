@@ -14,6 +14,7 @@
             <div class="nav-links">
                 <a href="#services">Services</a>
                 <a href="#process">How It Works</a>
+                <a href="#about">About</a>
                 <a href="#faq">FAQ</a>
                 <a href="#quote">Contact</a>
             </div>
@@ -148,6 +149,55 @@
             </div>
         </section>
 
+        <section id="about" class="about-section">
+            <div class="container about-grid">
+                <div class="about-copy">
+                    <span class="about-subtitle">Who We Are</span>
+                    <h2>Texas Top Standard</h2>
+                    <p>We bring precision, grit, and relentless follow-through to every job, setting a higher standard for Texas properties that demand flawless exterior care.</p>
+                    <p>From storefronts to family homes, our team combines high-performance cleaning with disciplined execution so every surface looks sharp, protected, and professionally finished.</p>
+                    <div class="about-stats">
+                        <div class="about-stat-pill">100% Satisfaction Guarantee</div>
+                        <div class="about-stat-pill">5★ Local Reputation</div>
+                    </div>
+                </div>
+                <div class="about-image-card" id="aboutTrigger" role="button" tabindex="0" aria-label="Show our equipment lineup" aria-expanded="false">
+                    <div class="about-image-placeholder">Professional Team &amp; Equipment</div>
+                </div>
+            </div>
+
+            <div class="container about-team-section">
+                <div class="about-equipment-modal" id="aboutEquipmentModal" role="dialog" aria-modal="true" aria-label="Our equipment lineup">
+                    <div class="about-equipment-modal-backdrop" data-close-modal></div>
+                    <div class="about-equipment-modal-panel">
+                        <button class="about-equipment-close" type="button" aria-label="Close equipment popup" data-close-modal>&times;</button>
+                        <div class="about-equipment-grid">
+                            <article class="about-equipment-card">
+                                <div class="about-equipment-visual">Industrial Rig</div>
+                                <h4>Commercial Pressure Washer</h4>
+                                <p>High-GPM industrial machine for large surfaces, heavy grime, and fast turnaround jobs.</p>
+                            </article>
+                            <article class="about-equipment-card">
+                                <div class="about-equipment-visual">Soft Wash</div>
+                                <h4>Soft Wash System</h4>
+                                <p>Low-pressure setup designed for delicate siding, roofs, and finish-sensitive materials.</p>
+                            </article>
+                            <article class="about-equipment-card">
+                                <div class="about-equipment-visual">Surface Cleaner</div>
+                                <h4>Surface Cleaner</h4>
+                                <p>Delivers flawless, streak-free results on driveways, sidewalks, and concrete pads.</p>
+                            </article>
+                            <article class="about-equipment-card">
+                                <div class="about-equipment-visual">Eco Blend</div>
+                                <h4>Premium Eco-Friendly Chemicals</h4>
+                                <p>Safe for landscaping while still delivering powerful cleaning performance.</p>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="process" class="container process-section">
             <div class="section-intro">
                 <span class="section-label">How It Works</span>
@@ -208,6 +258,50 @@
                 </div>
             </div>
         </section>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const trigger = document.getElementById('aboutTrigger');
+                const modal = document.getElementById('aboutEquipmentModal');
+                const closeButtons = document.querySelectorAll('[data-close-modal]');
+
+                if (trigger && modal) {
+                    const openModal = () => {
+                        modal.classList.add('open');
+                        trigger.setAttribute('aria-expanded', 'true');
+                    };
+
+                    const closeModal = () => {
+                        modal.classList.remove('open');
+                        trigger.setAttribute('aria-expanded', 'false');
+                    };
+
+                    trigger.addEventListener('click', openModal);
+                    trigger.addEventListener('keydown', (event) => {
+                        if (event.key === 'Enter' || event.key === ' ') {
+                            event.preventDefault();
+                            openModal();
+                        }
+                    });
+
+                    closeButtons.forEach((button) => {
+                        button.addEventListener('click', closeModal);
+                    });
+
+                    modal.addEventListener('click', (event) => {
+                        if (event.target === modal) {
+                            closeModal();
+                        }
+                    });
+
+                    document.addEventListener('keydown', (event) => {
+                        if (event.key === 'Escape' && modal.classList.contains('open')) {
+                            closeModal();
+                        }
+                    });
+                }
+            });
+        </script>
 
         <section id="faq" class="faq-section">
             <div class="container">
