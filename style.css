@@ -110,6 +110,40 @@ header {
     gap: 12px;
 }
 
+.language-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 40px;
+    padding: 8px 12px;
+    color: var(--texas-white);
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    border-radius: 999px;
+    font: inherit;
+    font-size: 0.8rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.language-toggle:hover,
+.language-toggle:focus-visible {
+    background-color: var(--texas-red);
+    border-color: var(--texas-red);
+    transform: translateY(-1px);
+}
+
+.language-toggle-en,
+.language-toggle-es {
+    opacity: 0.65;
+}
+
+.show-english .language-toggle-en,
+:not(.show-english) .language-toggle-es {
+    opacity: 1;
+}
+
 .nav-portal,
 .nav-phone {
     text-decoration: none;
