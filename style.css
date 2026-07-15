@@ -63,7 +63,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 20px;
+    gap: 32px;
     padding: 18px 0;
 }
 
@@ -72,6 +72,7 @@ header {
     font-weight: 900;
     font-size: 1.45rem;
     letter-spacing: 0.6px;
+    flex-shrink: 0;
 }
 
 .logo span {
@@ -80,8 +81,10 @@ header {
 
 .nav-links {
     display: flex;
-    gap: 24px;
     align-items: center;
+    justify-content: center;
+    flex: 1;
+    gap: 24px;
 }
 
 .nav-links a {
@@ -104,9 +107,10 @@ header {
     text-decoration-color: var(--texas-red);
 }
 
-.nav-actions {
+.contact-actions {
     display: flex;
     align-items: center;
+    flex-shrink: 0;
     gap: 12px;
 }
 
@@ -145,12 +149,18 @@ header {
 }
 
 .nav-portal,
+.nav-email,
 .nav-phone {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
     text-decoration: none;
     font-weight: 700;
-    padding: 10px 16px;
+    padding: 8px 12px;
     border-radius: 999px;
     transition: transform 0.2s, background-color 0.2s, border-color 0.2s;
+    white-space: nowrap;
 }
 
 .nav-portal {
@@ -165,6 +175,21 @@ header {
     transform: translateY(-1px);
 }
 
+.nav-email {
+    color: var(--texas-silver);
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    font-size: 0.8rem;
+}
+
+.nav-email:hover,
+.nav-email:focus-visible {
+    color: var(--texas-white);
+    background-color: rgba(255, 255, 255, 0.12);
+    border-color: var(--texas-white);
+    transform: translateY(-1px);
+}
+
 .nav-phone {
     color: var(--texas-white);
     background-color: var(--texas-red);
@@ -173,6 +198,22 @@ header {
 .nav-phone:hover {
     background-color: var(--texas-red-hover);
     transform: translateY(-1px);
+}
+
+@media (max-width: 1100px) {
+    .site-nav {
+        flex-wrap: wrap;
+        gap: 16px 28px;
+    }
+
+    .nav-links {
+        order: 3;
+        flex-basis: 100%;
+    }
+
+    .contact-actions {
+        margin-left: auto;
+    }
 }
 
 .hero-section {
@@ -1090,8 +1131,24 @@ header {
 
 .site-footer p {
     margin: 0;
-    padding: 26px 0;
+    padding: 26px 0 8px;
     text-align: center;
+}
+
+.footer-email {
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+    padding-bottom: 26px;
+    color: var(--texas-white);
+    text-decoration-color: var(--texas-red);
+    text-underline-offset: 4px;
+    transition: color 0.2s ease;
+}
+
+.footer-email:hover,
+.footer-email:focus-visible {
+    color: var(--texas-red);
 }
 
 @media (max-width: 1024px) {
@@ -1126,7 +1183,7 @@ header {
         gap: 14px;
     }
 
-    .nav-actions {
+    .contact-actions {
         width: 100%;
         justify-content: flex-start;
         flex-wrap: wrap;
@@ -1142,8 +1199,7 @@ header {
     }
 
     .btn-primary,
-    .btn-secondary,
-    .nav-phone {
+    .btn-secondary {
         width: 100%;
         text-align: center;
     }
