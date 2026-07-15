@@ -16,7 +16,7 @@
                 <a href="#about">Nosotros</a>
                 <a href="#process">Cómo Funciona</a>
                 <a href="#faq">Preguntas Frecuentes</a>
-                <a href="#quote">Contacto</a>
+                <a href="#quote" class="nav-quote">Cotización Gratis</a>
             </div>
             <div class="contact-actions">
                 <div class="language-toggle" role="group" aria-label="Seleccionar idioma">
@@ -24,10 +24,22 @@
                     <span aria-hidden="true">|</span>
                     <button class="language-option active" type="button" data-language="es" aria-pressed="true">ES</button>
                 </div>
-                <a href="mailto:txtoppw@gmail.com" class="nav-email" aria-label="Enviar correo a Texas Top Pressure Washing">
-                    <span aria-hidden="true">✉</span> txtoppw@gmail.com
-                </a>
-                <a href="tel:5123670935" class="nav-phone">📞 (512) 367-0935</a>
+                <details class="contact-menu">
+                    <summary aria-label="Abrir detalles de contacto">
+                        <span aria-hidden="true">✉</span>
+                        <span>Detalles de contacto</span>
+                    </summary>
+                    <div class="contact-menu-panel">
+                        <a href="tel:5123670935" class="contact-menu-item">
+                            <span aria-hidden="true">📞</span>
+                            <span><strong>Llamar</strong>(512) 367-0935</span>
+                        </a>
+                        <a href="mailto:txtoppw@gmail.com" class="contact-menu-item">
+                            <span aria-hidden="true">✉</span>
+                            <span><strong>Correo electrónico</strong>txtoppw@gmail.com</span>
+                        </a>
+                    </div>
+                </details>
             </div>
         </nav>
     </header>
@@ -613,6 +625,11 @@
             ['Enviar Solicitud de Cotización', 'Submit Quote Request'],
             ['Aquí aparecerá información detallada sobre el servicio comercial.', 'Detailed information about the commercial service will appear here.'],
             ['Texas Top Pressure Washing ofrece limpieza exterior comercial y residencial, lavado posterior a la construcción, servicio para flotillas y lavado suave en Austin y comunidades cercanas.', 'Texas Top Pressure Washing provides commercial and residential exterior cleaning, post-construction washing, fleet service, and soft washing in Austin and nearby communities.'],
+            ['Cotización Gratis', 'Free Quote'],
+            ['Abrir detalles de contacto', 'Open contact details'],
+            ['Detalles de contacto', 'Contact Details'],
+            ['Llamar', 'Call'],
+            ['Correo electrónico', 'Email'],
         ]);
 
         const textNodes = [];
