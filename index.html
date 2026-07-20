@@ -12,7 +12,7 @@
         <nav class="site-nav container">
             <div class="logo">
                 <img src="assets/logos /logo.png" alt="Texas Top Pressure Washing logo">
-                <span>Texas Top <span data-i18n="brand">Pressure Washing</span></span>
+                <span>Texas Top Pressure Washing</span>
             </div>
             <div class="nav-links">
                 <a href="#services">Servicios</a>
@@ -175,7 +175,6 @@
             <div class="container about-grid">
                 <div class="about-copy">
                     <span class="about-subtitle">Quiénes Somos</span>
-                    <h2>El Estándar Texas Top</h2>
                     <p>Fundada y operada por hermanos, Texas Top Pressure Washing se construyó sobre una promesa simple: brindar un cuidado exterior de élite y disciplinado con una responsabilidad local incomparable.</p>
                     <p>Combinamos equipos comerciales de alto rendimiento con un enfoque práctico, operado directamente por los propietarios. Ya sea que restauremos la entrada de una residencia o gestionemos el frente de un local comercial de múltiples unidades, nuestros clientes tratan directamente con los propietarios. No tomamos atajos, no enviamos cuadrillas sin capacitación y no nos retiramos hasta que el trabajo cumpla con nuestro más alto estándar Texas.</p>
                     <div class="about-stats">
@@ -547,7 +546,11 @@
         });
 
         const languageButtons = Array.from(document.querySelectorAll('[data-language]'));
-        const englishText = new Map([
+        const translationKey = (text) => text
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '');
+        const translations = {
+            en: Object.fromEntries([
             ['Servicios', 'Services'], ['Nosotros', 'About'], ['Como Funciona', 'How It Works'], ['Preguntas Frecuentes', 'FAQ'], ['Contacto', 'Contact'],
             ['Con Licencia y Seguro', 'Fully Licensed & Insured'], ['El Equipo de Lavado a Presion Comercial y Residencial de Confianza en Austin', "Austin's Trusted Commercial & Residential Pressure Washing Team"], ['Limpieza exterior de nivel industrial, lavado de sitios despues de la construccion, cuidado de techos y revestimientos con lavado suave, y mantenimiento de flotillas en el area metropolitana de Austin.', 'Industrial-grade exterior cleaning, post-construction washing, soft-wash roof and siding care, and fleet maintenance throughout the Austin metro area.'], ['Llame Ahora', 'Call Now'], ['Cotizacion Gratuita en el Sitio', 'Free On-Site Quote'], ['Programacion Comercial 24/7', '24/7 Commercial Scheduling'], ['COI y W-9 Disponibles', 'COI & W-9 Available'], ['Servicio de Flotillas a Domicilio', 'Mobile Fleet Service'],
             ['Cobertura de seguro completa para proyectos comerciales, asociaciones de propietarios y contratistas generales.', 'Full insurance coverage for commercial projects, homeowners associations, and general contractors.'], ['Equipo Comercial', 'Commercial Equipment'], ['Limpieza de alta presion para concreto, manchas de aceite, limpieza de construccion y lavado intensivo de flotillas.', 'High-pressure cleaning for concrete, oil stains, construction cleanup, and intensive fleet washing.'], ['Lavado Suave Seguro', 'Safe Soft Washing'], ['Limpieza a baja presion para revestimientos, techos, ladrillo y superficies delicadas que protege su propiedad.', 'Low-pressure cleaning for siding, roofs, brick, and delicate surfaces that protects your property.'],
@@ -571,10 +574,13 @@
             ['Cumplimiento de la EPA / Listos para la Recuperación de Agua', 'EPA Compliant / Water Recovery Ready'],
             ['Proveedor Verificado (Facturación a 30 Días Disponible)', 'Verified Vendor (Net-30 Billing Available)'],
             ['Desde gasolineras y superficies comerciales hasta entradas de vehículos, terrazas y flotillas, ofrecemos resultados consistentes y sin daños.', 'From gas stations and commercial surfaces to driveways, patios, and fleets, we deliver consistent results without damage.'],
+            ['Equipo de lavado comercial limpiando la entrada y el estacionamiento de una tienda', 'Commercial washing crew cleaning a retail store entrance and parking lot'],
             ['Lavado de Sitios Comerciales y Posterior a la Construcción', 'Commercial and Post-Construction Site Washing'],
             ['Limpieza profunda de aceras, estacionamientos, exteriores de edificios, marquesinas y entradas antes de la inauguración.', 'Deep cleaning for sidewalks, parking lots, building exteriors, canopies, and entryways before opening day.'],
+            ['Recupere el atractivo de su propiedad con limpieza suave para revestimientos, terrazas, cercas y concreto.', 'Restore your propertys curb appeal with soft washing for siding, patios, fences, and concrete.'],
             ['Servicio residencial de lavado suave para revestimientos, entradas de vehículos y patios', 'Residential soft-washing service for siding, driveways, and patios'],
             ['Equipo móvil de lavado de flotillas limpiando camiones y equipos comerciales en el sitio', 'Mobile fleet-washing crew cleaning commercial trucks and equipment on site'],
+            ['Limpieza exterior para pabellones y entradas de invitados en espacios para bodas y eventos', 'Exterior cleaning for pavilions and guest entrances at wedding and event venues'],
             ['Lavado Móvil de Camiones y Equipos', 'Mobile Truck and Equipment Washing'],
             ['Servicio de flotillas en el sitio para camiones de 18 ruedas, vehículos de reparto y equipo pesado en toda la región de Austin.', 'On-site fleet service for 18-wheelers, delivery vehicles, and heavy equipment throughout the Austin region.'],
             ['Mantenga sus espacios para eventos, pabellones al aire libre, grandes entradas y patios listos para las fotos de cada cliente. Nos especializamos en limpieza rápida posterior a eventos, eliminando derrames pegajosos, manchas de bebidas y grasa de puestos de comida de forma segura con lavado suave a baja presión y recuperación de concreto con agua caliente.', "Keep your event spaces, outdoor pavilions, grand entrances, and patios ready for every client's photos. We specialize in rapid post-event cleaning, safely removing sticky spills, beverage stains, and food-vendor grease with low-pressure soft washing and hot-water concrete recovery."],
@@ -583,6 +589,7 @@
             ['Eliminación de manchas de aceite y chicle, y preparación para pintar líneas y renovar superficies.', 'Oil-stain and gum removal, plus preparation for line painting and surface renewal.'],
             ['Grandes entradas, patios de concreto y fachadas de edificios mantenidos con estándares profesionales.', 'Grand entrances, concrete patios, and building facades maintained to professional standards.'],
             ['Quiénes Somos', 'Who We Are'],
+            ['El Estándar de Texas Top Pressure Washing', 'The Texas Top Pressure Washing Standard'],
             ['El Estándar Texas Top', 'The Texas Top Standard'],
             ['Fundada y operada por hermanos, Texas Top Pressure Washing se construyó sobre una promesa simple: brindar un cuidado exterior de élite y disciplinado con una responsabilidad local incomparable.', 'Founded and operated by brothers, Texas Top Pressure Washing was built on a simple promise: delivering elite, disciplined exterior care with unmatched local accountability.'],
             ['Combinamos equipos comerciales de alto rendimiento con un enfoque práctico, operado directamente por los propietarios. Ya sea que restauremos la entrada de una residencia o gestionemos el frente de un local comercial de múltiples unidades, nuestros clientes tratan directamente con los propietarios. No tomamos atajos, no enviamos cuadrillas sin capacitación y no nos retiramos hasta que el trabajo cumpla con nuestro más alto estándar Texas.', "We combine high-performance, commercial-grade equipment with a hands-on, owner-operated approach. Whether we are restoring a residential driveway or managing a multi-unit commercial storefront, our clients deal directly with the owners. We don't cut corners, we don't dispatch untrained crews, and we don't leave until the job meets our highest Texas standard."],
@@ -633,7 +640,9 @@
             ['Contacto', 'Contact'],
             ['Llamar', 'Call'],
             ['Correo electrónico', 'Email'],
-        ]);
+            ].map(([spanish, english]) => [translationKey(spanish), english])),
+            es: {}
+        };
 
         const textNodes = [];
         const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
@@ -652,10 +661,10 @@
         const pageDescriptionText = pageDescription?.getAttribute('content');
 
         function localize(sourceText, language) {
-            return language === 'en' ? englishText.get(sourceText) || sourceText : sourceText;
+            return translations[language][translationKey(sourceText)] || sourceText;
         }
 
-        function translateText(language) {
+        function switchLanguage(language) {
             textNodes.forEach(([node, sourceText]) => {
                 const leadingWhitespace = sourceText.match(/^\s*/)[0];
                 const trailingWhitespace = sourceText.match(/\s*$/)[0];
@@ -674,9 +683,9 @@
             localStorage.setItem('texas-top-language', language);
         }
 
-        translateText(localStorage.getItem('texas-top-language') || 'es');
+        switchLanguage(localStorage.getItem('texas-top-language') || 'es');
         languageButtons.forEach((button) => {
-            button.addEventListener('click', () => translateText(button.dataset.language));
+            button.addEventListener('click', () => switchLanguage(button.dataset.language));
         });
     </script>
 </body>
