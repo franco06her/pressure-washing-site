@@ -398,18 +398,20 @@
                 </div>
 
                 <div class="quote-form-box">
-                    <form action="#" method="POST" class="quote-form">
+                    <form id="contact-form" action="#" method="POST" class="quote-form">
+                        <div data-fs-success></div>
+                        <div data-fs-error></div>
                         <div class="form-group">
                             <label for="name">Nombre Completo / Empresa</label>
-                            <input type="text" id="name" required placeholder="Juan Pérez o Administración de Propiedades Acme">
+                            <input type="text" id="name" name="name" required placeholder="Juan Pérez o Administración de Propiedades Acme">
                         </div>
                         <div class="form-group">
                             <label for="phone">Número de Teléfono</label>
-                            <input type="tel" id="phone" required placeholder="(512) 555-0123">
+                            <input type="tel" id="phone" name="phone" required placeholder="(512) 555-0123">
                         </div>
                         <div class="form-group">
                             <label for="property-type">Tipo de Propiedad</label>
-                            <select id="property-type" required>
+                            <select id="property-type" name="property_type" required>
                                 <option value="" disabled selected>Seleccione el tipo de propiedad...</option>
                                 <option value="commercial">Comercial / Posterior a la Construcción</option>
                                 <option value="residential">Residencial / Asociación de Propietarios</option>
@@ -418,9 +420,9 @@
                         </div>
                         <div class="form-group">
                             <label for="message">Detalles del Proyecto</label>
-                            <textarea id="message" rows="4" placeholder="Describa las superficies y los pies cuadrados estimados..."></textarea>
+                            <textarea id="message" name="message" rows="4" placeholder="Describa las superficies y los pies cuadrados estimados..."></textarea>
                         </div>
-                        <button type="submit" class="btn-submit">Enviar Solicitud de Cotización</button>
+                        <button type="submit" class="btn-submit" data-fs-submit-btn>Enviar Solicitud de Cotización</button>
                     </form>
                 </div>
             </div>
@@ -699,5 +701,10 @@
             button.addEventListener('click', () => switchLanguage(button.dataset.language));
         });
     </script>
+    <script>
+        window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+        formspree('initForm', { formElement: '#contact-form', formId: 'mojgwoqp' });
+    </script>
+    <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 </body>
 </html>
